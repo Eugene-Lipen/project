@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 id="account">Личная информация</h1>
+
+ {% for i in user %}
+<style>
+
+#button {
+  font-size: 17px;
+  font-family: 'Marmelad', 'Arial', sans-serif;
+  font-weight: 700;
+  color: white;
+  text-decoration: none;
+  padding: .8em 1em calc(.8em + 3px);
+  border-radius: 3px;
+  background: red;
+  box-shadow: 0 -3px rgb(53,167,110) inset;
+  transition: 0.2s;
+
+
+}
+#button:hover { background: rgb(53, 167, 110); }
+#button:active {
+  background: rgb(33,147,90);
+  box-shadow: 0 3px rgb(33,147,90) inset;
+}
+
+
+</style>
+<div class="user_account">
+    
+    <p> Логин: {{i.username}}</p>
+    <p> Имя: {{i.first_name}}</p>
+    <p> Фамилия: {{i.last_name}}</p>
+    <p> Телефон: {{i.phone}}</p>
+    <p> Email: {{i.email}}</p>
+    <p> Телеграм: {{i.telegram}}</p>
+    <p> Дата устройства на работу: {{i.date_job}}</p>
+    <p> Позиция: {{position}}</p>
+
+    {%if test != Null%}
+        <button id="button"><a href="{% url 'testing' %}">{{category_test}}</a></button>
+    {% endif %}
+
+
+
+</div>
+
+{% endfor %}
+
+{% endblock %}

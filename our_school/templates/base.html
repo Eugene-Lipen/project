@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css'%}" type="text/css">
+    <title>Document</title>
+</head>
+<body>
+    {% csrf_token %}
+    <div class="wrapper">
+        <header class="header">
+            <div class="header__container _container">
+                <a href="{% url 'top' %}" class="header__logo">
+                    <img src="{% static 'img/Logo_top.png' %}" alt="">
+                </a>
+                <div class="search__container _container">
+                    <form action="{% url 'search_results' %}" method="get">
+                        <input id="search" name="q" type="text" placeholder="Поиск...">
+                    </form>
+                </div>
+                <nav class="header__menu menu ">
+                    <ul class="menu__list _container">
+                        <li class="menu__item">
+                            <a href="{% url 'top' %}" class="menu__link">Главная</a>
+                        </li>
+                        <li class="menu__item">
+                            <a href="{% url 'instructions' %}" class="menu__link">Инструкции</a>
+                        </li>
+
+                        <li class="menu__item">
+                            <a href="{% url 'account' %}" class="menu__link">{{name}}</a>
+                        </li>
+                        <li class="menu__item">
+                            <a href="{% url 'account_logout' %}" class="menu__link">Выход</a>
+                        </li>
+                    </ul>
+                </nav>
+
+
+            </div>
+        </header>
+
+    </div>
+
+
+    <div id = 'otstyp'>
+        {% block content %}
+
+
+        {% endblock %}
+    </div>
+</body>
+</html>
